@@ -1,23 +1,41 @@
 package com.example.review.service;
 
+import com.example.review.model.ChatForm;
+import com.example.review.model.ChatMessage;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class MessageService {
-    private String message;
+    private List<ChatMessage> chatMessages;
 
-    public MessageService(String message){
-        System.out.println("Creating Message Service");
-        this.message = message;
+    @PostConstruct
+    public void postConstruct() {
+        System.out.println("Creating MessageService bean");
+        this.chatMessages = new ArrayList<>();
     }
 
-    public String uppercase(){
-        System.out.println("Upper Case Method Called");
-        return message.toUpperCase();
+    public void addMessage(ChatForm chatForm){
+        ChatMessage newMessage = new ChatMessage();
+        newMessage.setUsername(chatForm.getUsername());
+        switch(chatForm.getMessageType()){
+            case "Say":
+                newMessage.setMessage(chatForm.getMessageText());
+                break;
+            case "Shout":
+                newMessage.setMessage(chatForm.getMessageText().toUpperCase());
+                break;
+            case "Whisper":
+                newMessage.setMessage(chatForm.getMessageText().toLowerCase());
+                break;
+        }
+        this.chatMessages.add(newMessage);
     }
 
-    public String lowercase(){
-        System.out.println("Lower Case Method Called");
-        return message.toLowerCase();
+    public List<ChatMessage> getChatMessages() {
+        return chatMessages;
     }
 }
