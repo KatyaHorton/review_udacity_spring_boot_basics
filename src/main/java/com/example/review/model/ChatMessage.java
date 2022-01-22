@@ -3,6 +3,8 @@ package com.example.review.model;
 public class ChatMessage {
     private String username;
     private String message;
+    private Integer messageId;
+
 
     public String getUsername(){
         return username;
@@ -18,5 +20,13 @@ public class ChatMessage {
 
     public void setMessage(String message){
         this.message = message;
+    }
+
+    public Integer getMessageId(){
+        return messageId;
+    }
+
+    public void setMessageId(Integer messageId){
+        this.messageId = messageId;
     }
 }
