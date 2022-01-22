@@ -1,27 +1,37 @@
 package com.example.review.model;
 
 public class User {
-    Integer userid;
-    String userName;
+    Integer userId;
+    String username;
     String salt;
     String password;
     String firstName;
     String lastName;
 
-    public Integer getUserid(){
-        return userid;
+    public  User (Integer userId, String username, String salt, String password, String firstName, String lastName){
+        this.userId = userId;
+        this.username = username;
+        this.salt = salt;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+
     }
 
-    public void setUserid(Integer userid){
-        this.userid = userid;
+    public Integer getUserId(){
+        return userId;
     }
 
-    public String getUserName(){
-        return userName;
+    public void setUserId(Integer userId){
+        this.userId = userId;
     }
 
-    public void setUserName(String userName){
-        this.userName = userName;
+    public String getUsername(){
+        return username;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
     }
 
     public String getSalt(){
